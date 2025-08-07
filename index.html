@@ -215,6 +215,77 @@
             border-radius: 15px;
         }
 
+        .contact-form-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+            margin-top: 20px;
+        }
+
+        .contact-form-section h3 {
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
         .divider {
             height: 3px;
             background: linear-gradient(90deg, #667eea, #764ba2);
@@ -314,8 +385,8 @@
         <div class="section cta-section">
             <h3>רוצה להתחיל?</h3>
             <div class="cta-buttons">
-                <a href="#" class="cta-button">🔹 שלח "רוצה בוט" בטלגרם</a>
-                <a href="#" class="cta-button">🔹 השאר פרטים בטופס</a>
+                <a href="https://t.me/moominAmir" class="cta-button" target="_blank">🔹 שלח "רוצה בוט" בטלגרם</a>
+                <a href="#contact-form" class="cta-button" onclick="showContactForm()">🔹 השאר פרטים בטופס</a>
             </div>
         </div>
 
@@ -323,6 +394,35 @@
             <p>🛠️ נבנה באהבה על ידי מפתח בוטים מנוסה</p>
             <p>📱 שירות בעברית - מכל הלב</p>
         </div>
+
+        <!-- Contact Form Section -->
+        <div id="contact-form" class="section contact-form-section" style="display: none;">
+            <h3>רוצה בוט בטלגרם? השאר פרטים ונחזור אליך:</h3>
+            <form action="https://formspree.io/f/meozpeog" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">שמך (חובה)</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact">אימייל או טלפון ליצירת קשר (חובה)</label>
+                    <input type="text" id="contact" name="contact" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">תיאור הבוט הרצוי (לא חובה)</label>
+                    <textarea id="description" name="description" rows="4" placeholder="תאר כאן איך הבוט אמור לעבוד או השאר ריק..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">שלח בקשה</button>
+            </form>
+        </div>
     </div>
-</body>
-</html>
+
+    <script>
+        function showContactForm() {
+            const form = document.getElementById('contact-form');
+            form.style.display = 'block';
+            form.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
